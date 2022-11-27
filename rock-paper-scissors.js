@@ -19,3 +19,59 @@ function getComputerChoice() {
   }
   return choice;
 }
+
+function playRound(playerChoice, computerChoice) {
+
+  playerChoice = playerChoice.toLowerCase();
+  computerChoice = computerChoice.toLowerCase();
+  
+  let result;
+  switch (playerChoice + computerChoice) {
+    case 'rockrock':
+    case 'scissorsscissors':
+    case 'paperpaper':
+      result = 'tie';
+      break
+
+    case 'rockpaper':
+    case 'paperscissors':
+    case 'scissorsrock':
+      result = 'lose';
+      break
+
+    case 'rockscissors':
+    case 'paperrock':
+    case 'scissorspaper':
+      result = 'win';
+      break
+  }
+
+  return result;
+}
+
+console.log(playRound('Rock', 'Paper'));
+
+/*   if (playerChoice == 'rock') {
+    if (computerChoice == 'rock') {
+      // tie
+    }
+    else if (computerChoice == 'paper') {
+      // lose
+    }
+    else if (computerChoice == 'scissors') {
+      // win
+    }
+  }
+
+  if (playerChoice == 'paper') {
+    if (computerChoice == 'rock') {
+      // win
+    }
+    else if (computerChoice == 'paper') {
+      // tie
+    }
+    if (computerChoice == 'scissors') {
+      // lose
+    }
+  }
+} */
