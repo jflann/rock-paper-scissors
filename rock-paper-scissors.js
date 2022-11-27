@@ -20,10 +20,25 @@ function getComputerChoice() {
   return choice;
 }
 
+function getPlayerChoice() {
+  let choice = {
+    value: null,
+    valid: false
+  }
+  while (choice.valid == false) {
+    choice.value = prompt('Rock, paper, or scissors?');
+    if (['rock', 'paper', 'scissors'].includes(choice.value.toLowerCase())) {
+      choice.valid = true;
+    }
+  }
+  return choice.value;
+}
+
 function playRound(playerChoice, computerChoice) {
 
   playerChoice = playerChoice.toLowerCase();
   
+  // determine result
   let result;
   switch (playerChoice + computerChoice) {
     // ties
@@ -31,6 +46,7 @@ function playRound(playerChoice, computerChoice) {
     case 'scissorsscissors':
     case 'paperpaper':
       result = 'tie';
+      alert("It's a tie!");
       break
 
     // losses
@@ -38,6 +54,7 @@ function playRound(playerChoice, computerChoice) {
     case 'paperscissors':
     case 'scissorsrock':
       result = 'lose';
+      alert(`You lose! ${computerChoice} beats your ${playerChoice}.`);
       break
     
     // wins
@@ -45,8 +62,49 @@ function playRound(playerChoice, computerChoice) {
     case 'paperrock':
     case 'scissorspaper':
       result = 'win';
+      alert(`You win! Your ${playerChoice} beats ${computerChoice}.`)
       break
   }
 
   return result;
+}
+
+function game(rounds = 5) {
+
+  let playerWins = 0;
+  let computerWins = 0;
+  let roundTies = 0;
+
+  // play rounds
+  for(let i = 0; i < rounds; i++) {
+
+    roundResult = playRound(getPlayerChoice(), getComputerChoice())
+
+    switch (roundResult) {
+      case 'win':
+        playerWins++;
+        break
+      case 'lose':
+        computerWins++;
+        break
+      case 'tie':
+        roundTies++;
+    }
+  }
+
+  // get game result
+  let gameResult;
+  if (playerWins > computerWins) {
+    gameResult = `Player wins! ${playerWins} : ${computerWins}`;
+  }
+  else if (playerWins < computerWins) {
+    gameResult = `Computer wins! ${playerWins} : ${computerWins}`;
+  }
+  else if (playerWins == computerWins) {
+    gameResult = `It's a tie! ${playerWins} : ${computerWins}`;
+  }
+
+  alert(gameResult);
+  return gameResult
+  
 }
