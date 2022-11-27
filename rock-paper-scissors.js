@@ -23,22 +23,24 @@ function getComputerChoice() {
 function playRound(playerChoice, computerChoice) {
 
   playerChoice = playerChoice.toLowerCase();
-  computerChoice = computerChoice.toLowerCase();
   
   let result;
   switch (playerChoice + computerChoice) {
+    // ties
     case 'rockrock':
     case 'scissorsscissors':
     case 'paperpaper':
       result = 'tie';
       break
 
+    // losses
     case 'rockpaper':
     case 'paperscissors':
     case 'scissorsrock':
       result = 'lose';
       break
-
+    
+    // wins
     case 'rockscissors':
     case 'paperrock':
     case 'scissorspaper':
@@ -48,30 +50,3 @@ function playRound(playerChoice, computerChoice) {
 
   return result;
 }
-
-console.log(playRound('Rock', 'Paper'));
-
-/*   if (playerChoice == 'rock') {
-    if (computerChoice == 'rock') {
-      // tie
-    }
-    else if (computerChoice == 'paper') {
-      // lose
-    }
-    else if (computerChoice == 'scissors') {
-      // win
-    }
-  }
-
-  if (playerChoice == 'paper') {
-    if (computerChoice == 'rock') {
-      // win
-    }
-    else if (computerChoice == 'paper') {
-      // tie
-    }
-    if (computerChoice == 'scissors') {
-      // lose
-    }
-  }
-} */
