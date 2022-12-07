@@ -1,0 +1,9 @@
+
+header {
+  color:darkslategray;
+}
+
+.game {
+  display: flex;
+  justify-content: center;
+}
