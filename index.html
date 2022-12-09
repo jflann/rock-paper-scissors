@@ -8,16 +8,36 @@
     <link rel="stylesheet" href="./style.css">
     <script src="rock-paper-scissors.js" defer></script>
 <body>
-  <header>
-    <h1>Rock, Paper, Scissors</h1>
-  </header>
+  <h1>Rock, Paper, Scissors</h1>
+
   <div class="game">
-    <button class="rock">Rock</button>
-    <button class="paper">Paper</button>
-    <button class="scissors">Scissors</button>
+    <div class="score-bar"></div>
+
+    <button class="game-button" id="rock">🪨</button>
+    <button class="game-button" id="paper">📜</button>
+    <button class="game-button" id="scissors">✂️</button>
+
+    <div class="score-bar">
+      <div class="point"></div>
+      <div class="point"></div>
+      <div class="point"></div>
+      <div class="point"></div>
+      <div class="point"></div>
+    </div>
+
   </div>
+
+  <div class="results">
+    <span id="playerScore">Player Score: 0</span>
+    <span id="computerScore">Computer Score: 0</span>
+  </div>
+
+  <div>
+    <button id="reset">Play Again</button>
+  </div>
+
   <footer>
-    <p>footer text</p>
+    footer text
   </footer>
 </body>
 </html>
