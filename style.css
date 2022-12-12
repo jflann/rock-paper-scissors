@@ -51,13 +51,6 @@ h1 {
   font-size: 80px;
 }
 
-.results {
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  gap: 100px;
-}
-
 button #reset {
   justify-self: center;
 }
