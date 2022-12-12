@@ -49,12 +49,12 @@ ref.learn('rock', 'scissors');
 ref.learn('paper', 'rock');
 ref.learn('scissors', 'paper');
 
-const startButton = document.querySelector('#start-game');
-startButton.addEventListener('click', startGame);
+const reset = document.querySelector('#reset');
+reset.addEventListener('click', resetGame);
 
-startGame();
+resetGame();
 
-function startGame() {
+function resetGame() {
   playerScore = 0;
   computerScore = 0;
   // clear score bars
@@ -62,15 +62,17 @@ function startGame() {
   scoreBars.forEach(div => div.replaceChildren());
 
   const choiceButtons = document.querySelectorAll(".game-button");
-  choiceButtons.forEach(choiceButton => choiceButton.addEventListener("click", choose));
+  choiceButtons.forEach(btn => btn.addEventListener("click", choose));
+
+  updateGameMessage("Ready to play!");
 }
 
-function endGame(winner) {
-  alert(`${winner} wins!`);
+function endGame() {
+  const choiceButtons = document.querySelectorAll(".game-button");
+  choiceButtons.forEach(btn => btn.removeEventListener("click", choose));
 }
 
 function choose() {
-  console.log(this);
   switch (ref.playRound(this.id, getComputerChoice())) {
     case 'choiceOne':
       handleRound('playerWin');
@@ -86,17 +88,25 @@ function choose() {
 
 function handleRound(outcome) {
   if (outcome === 'tie') {
-    gameMessage = "It's a tie!";
+    updateGameMessage("Round tie! Choose again.")
   }
   if (outcome === 'playerWin') {
     incrementScore('player');
+    updateGameMessage("You win a point! Choose again.")
   }
   if (outcome === 'computerWin') {
     incrementScore('computer');
+    updateGameMessage("Computer wins a point! Choose again.")
   }
 
-  if (playerScore === 5) endGame('player');
-  if (computerScore === 5) endGame('computer');
+  if (playerScore === 5) {
+    updateGameMessage("You win the game! Click below to play again!");
+    endGame();
+  }
+  if (computerScore === 5) {
+    updateGameMessage("Computer wins the game! Click below to play again!");
+    endGame();
+  }
 }
 
 function incrementScore(player) {
@@ -113,5 +123,10 @@ function incrementScore(player) {
   const point = document.createElement('div');
   point.classList.add('point');
   scoreBar.appendChild(point);
+}
+
+function updateGameMessage(message) {
+  let element = document.getElementById('game-message');
+  element.textContent = message;
 }
 

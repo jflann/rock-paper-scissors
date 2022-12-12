@@ -11,18 +11,25 @@
   <h1>Rock, Paper, Scissors</h1>
 
   <div class="game">
-    <div class="score-bar" id="player-score-bar"></div>
+
+    <div class="score-container">
+      <div class="score-bar" id="player-score-bar"></div>
+      <p class="score-text">Player Score</p>
+    </div>
 
     <button class="game-button" id="rock">🪨</button>
     <button class="game-button" id="paper">📜</button>
     <button class="game-button" id="scissors">✂️</button>
 
-    <div class="score-bar" id="computer-score-bar"></div>
+    <div class="score-container">
+      <div class="score-bar" id="computer-score-bar"></div>
+      <p class="score-text">Computer Score</p>
+    </div>
 
   </div>
-    <button type="button" id="start-game">Start Game</button>
-    <button id="reset">Play Again</button>
-  </div>
+
+  <h3 id="game-message">Ready to play!</h3>
+  <button id="reset">Play Again</button>
 
   <footer>
     footer text
