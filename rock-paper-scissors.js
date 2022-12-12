@@ -62,14 +62,22 @@ function resetGame() {
   scoreBars.forEach(div => div.replaceChildren());
 
   const choiceButtons = document.querySelectorAll(".game-button");
-  choiceButtons.forEach(btn => btn.addEventListener("click", choose));
+  choiceButtons.forEach(function(btn) {
+    btn.addEventListener("click", choose);
+    btn.classList.remove("disabled");
+    btn.removeAttribute('disabled');
+  });
 
   updateGameMessage("Ready to play!");
 }
 
 function endGame() {
   const choiceButtons = document.querySelectorAll(".game-button");
-  choiceButtons.forEach(btn => btn.removeEventListener("click", choose));
+  choiceButtons.forEach(function(btn) {
+    btn.removeEventListener("click", choose);
+    btn.classList.add("disabled");
+    btn.setAttribute('disabled', '');
+  });
 }
 
 function choose() {
