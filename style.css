@@ -92,14 +92,21 @@ h1 {
 
 .choice-display {
   height: 20%;
+  font-size: 60px;
+}
+
+.choice-display span {
   font-size: 120px;
 }
 
 #reset {
   align-self: center;
   margin-bottom: auto;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 12px;
 }
 
 footer {
-  
+
 }

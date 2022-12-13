@@ -68,6 +68,7 @@ function resetGame() {
     btn.removeAttribute('disabled');
   });
 
+  displayRound('?', '?');
   updateGameMessage("Ready to play!");
 }
 
@@ -81,7 +82,12 @@ function endGame() {
 }
 
 function choose() {
-  switch (ref.playRound(this.id, getComputerChoice())) {
+  let playerChoice = this.id;
+  let computerChoice = getComputerChoice();
+
+  displayRound(playerChoice, computerChoice);
+
+  switch (ref.playRound(playerChoice, computerChoice)) {
     case 'choiceOne':
       handleRound('playerWin');
       return
@@ -115,6 +121,20 @@ function handleRound(outcome) {
     updateGameMessage("Computer wins the game! Click below to play again!");
     endGame();
   }
+}
+
+function displayRound(playerChoice, computerChoice) {
+  let emojiMap = {
+    'rock': '🪨',
+    'paper': '📜',
+    'scissors': '✂️',
+    '?': '?'
+  }
+  let playerDisplay = document.querySelector('#player-choice');
+  let computerDisplay = document.querySelector('#computer-choice');
+
+  playerDisplay.textContent = emojiMap[playerChoice];
+  computerDisplay.textContent = emojiMap[computerChoice];
 }
 
 function incrementScore(player) {
