@@ -21,7 +21,7 @@ h1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60%;
+  height: 40%;
 }
 
 .score-bar {
@@ -88,6 +88,11 @@ h1 {
 .game .disabled {
   pointer-events: none;
   border-color: rgb(192, 192, 192);
+}
+
+.choice-display {
+  height: 20%;
+  font-size: 120px;
 }
 
 #reset {
